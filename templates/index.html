@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Subir Imagen - My Image Processing App{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="mb-4">Subir Imagen</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="fileInput" name="file" accept=".png, .jpg, .jpeg, .gif" required>
+                <label class="custom-file-label" for="fileInput">Seleccionar archivo...</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Mostrar Imágenes con Filtros</button>
+        </form>
+    </div>
+{% endblock %}

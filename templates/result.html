@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Resultados - My Image Processing App{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="mb-4">Resultados</h1>
+        <h2>Imagen Original</h2>
+        <img src="{{ original }}" alt="Imagen Original" class="img-fluid mb-4">
+
+        <h2>Imágenes con Filtros</h2>
+        <div class="row">
+            {% for img in filtered_images %}
+                <div class="col-md-3 mb-4">
+                    <img src="data:image/png;base64,{{ img }}" alt="Filtro {{ loop.index }}" class="img-fluid">
+                </div>
+            {% endfor %}
+        </div>
+
+        <form action="/upload_another" class="mb-4">
+            <button type="submit" class="btn btn-primary mt-4">Subir Otra Imagen</button>
+        </form>
+    </div>
+{% endblock %}
