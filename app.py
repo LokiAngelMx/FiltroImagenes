@@ -15,6 +15,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 def apply_filters(image_path):
     img = cv2.imread(image_path)
     filtered_images = []
@@ -37,14 +38,17 @@ def apply_filters(image_path):
             [1, 2, 1]
         ]),
         # Filtro de inversión otro
-        np.array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]]),
-        # np.array([
-        #     [-1, -1, -1],
-        #     [-1,  9, -1],
-        #     [-1, -1, -1]
-        # ]),
+        np.array([
+            [-1, -1, -1], 
+            [-1, 8, -1], 
+            [-1, -1, -1]
+        ]),
         # Filtro Gaussiano
-        np.array([[ 1, 1, 1], [ 1, 1, 1],[ 1, 1, 1]]),
+        np.array([
+            [ 1, 1, 1], 
+            [ 1, 1, 1],
+            [ 1, 1, 1]
+        ]),
         # Filtro Laplaciano
         np.array([
             [0, -1, 0],
@@ -52,12 +56,11 @@ def apply_filters(image_path):
             [0, -1, 0]
         ]),
         # Filtro de Detección de Bordes de Prewitt (horizontal) otro
-        np.array([[1,1,1],[1,-2,1],[-1,-1,-1]]),
-        # np.array([
-        #     [-1, -1, -1],
-        #     [0, 0, 0],
-        #     [1, 1, 1]
-        # ]),
+        np.array([
+            [1,1,1],
+            [1,-2,1],
+            [-1,-1,-1]
+        ]),
         # Filtro de Detección de Bordes de Prewitt (vertical)
         np.array([
             [-1, 0, 1],
@@ -65,12 +68,11 @@ def apply_filters(image_path):
             [-1, 0, 1]
         ]),
         # Filtro de Afinamiento otro
-        np.array([[0, -1, 0], [-1, 20, -1], [0, -1, 0]])
-        # np.array([
-        #     [0, -1, 0],
-        #     [-1, 5, -1],
-        #     [0, -1, 0]
-        # ])
+        np.array([
+            [0, -1, 0], 
+            [-1, 20, -1], 
+            [0, -1, 0]
+        ])
     ]
 
     for kernel in filters:
